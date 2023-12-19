@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Air Conditioning Repair</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+    <div class="login-box">
+        <h2>Book Air Conditioning Repair</h2>
+        <form id="booking-form">
+            <div class="user-box">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Name:</label>
+                <div class="error-message" id="name-error">Name is required.</div>
+            </div>
+            <div class="user-box">
+                <input type="text" id="email" name="email" required>
+                <label for="email">Email:</label>
+                <div class="error-message" id="email-error">Invalid email format.</div>
+            </div>
+            <div class="user-box">
+                <input type="text" id="phoneNumber" maxlength="11" required>
+                <label for="phoneNumber">Contact Number (PH):</label>
+                <div class="error-message" id="number-error">Invalid Philippine phone number format.</div>
+            </div>
+            <div class="user-box">
+                <input type="text" id="location" name="location" required>
+                <label for="location">Location:</label>
+                <div class="error-message" id="location-error">Location is required.</div>
+            </div>
+            <div class="user-defined">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <div class="error-message" id="date-error">Date is required.</div>
+            </div>
+            <div class="user-defined">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+                <div class="error-message" id="time-error">Time is required.</div>
+            </div>
+            <a href="#" id="bookNowButton">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </a>
+            <p id="booking-details"></p>
+        </form>
+    </div>
+
+    <div id="confirmation-popup">
+        <h3>Confirm Appointment</h3>
+        <p id="confirmation-message"></p>
+        <button onclick="displayBookingDetails()">Yes, Confirm</button>
+        <button onclick="closeConfirmationPopup()">Cancel</button>
+    </div>
+
+
+    <script src="/javascript/script.js"></script>
+</body>
+</html>
