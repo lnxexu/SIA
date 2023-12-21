@@ -5,6 +5,22 @@
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
 </head>
 <body>
+  <div class="loading-screen" id="loading-screen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+
+    <section class="mast">
+        <button class="exit"><a href="index.html">x</a></button>
+        <figure class="mast__bg" style="background-image: url('/assets/bg.jpg')"></figure>
+        <header class="mast__header">
+          <h1 class="mast__title js-spanize">Motto:</h1> 
+          <hr class="sep"/>
+          <h1 class="mast__text js-spanize">Chill Problems, We'll Fix Them! Your Comfort, Our Commitment.</h1>
+        </header>
+
+        
+      </section>
     <div class="login-box">
         <h2>Book Air Conditioning Repair</h2>
         <form id="booking-form">
@@ -55,7 +71,33 @@
         <button onclick="displayBookingDetails()">Yes, Confirm</button>
         <button onclick="closeConfirmationPopup()">Cancel</button>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        var spanizeLetters = {
+          init: function () {
+            this.bindEvents();
+          },
+          bindEvents: function () {
+            var letters = document.querySelectorAll('.js-spanize');
+            letters.forEach(function (el) {
+              el.innerHTML = spanizeLetters.wrapWithSpans(el.textContent.trim());
+            });
+          },
+          wrapWithSpans: function (text) {
+            return '<span>' + text.split('').join('</span><span>') + '</span>';
+          },
+        };
 
+        spanizeLetters.init();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const visibilityDuration = 1000;
+                  setTimeout(function () {
+                      document.getElementById("loading-screen").classList.add("loaded");
+                  }, visibilityDuration);
+                  
+              });
+    </script>
 
     <script src="/javascript/script.js"></script>
 </body>

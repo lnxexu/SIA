@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.mast__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: 50%;
+  background-color: #000;
+  z-index: 0;
+  opacity: 30%;
+}
+
+.mast {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background-color: #111;
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(#111, 0.9);
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 750px;
+  height: 500x;
+  border-radius: 10px;
+
+  background: #fff;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  background: url("https://i.postimg.cc/vmK4vkf0/neon-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.left img {
+  width: 100px;
+}
+
+.left h1 {
+  margin-top: 10px;
+  font-size: 3em;
+  font-weight: 100;
+  font-family: "Bebas Neue", sans-serif;
+  color: #fff;
+}
+
+.right {
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.inputbox {
+  margin: 8px 0px;
+  width: 350px;
+  height: fit-content;
+}
+
+input {
+  margin-top: 4px;
+  padding: 5px;
+  width: 100%;
+  height: 28px;
+  text-indent: 9px;
+  border: none;
+  border-radius: 2px;
+
+  background: rgba(128, 128, 128, 0.2);
+}
+
+input:hover {
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.right .title h2 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.inputbox label {
+  font-size: 1em;
+}
+
+input::placeholder {
+  text-indent: 10px;
+}
+
+.create {
+  display: flex;
+  justify-content: center;
+  width: 360px;
+}
+
+.create button {
+  margin-top: 5px;
+  width: 250px;
+  height: 35px;
+  border: none;
+  border-radius: 25px;
+
+  color: #fff;
+  background: #000;
+}
+
+.additional p {
+  margin-top: 5px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.additional p span {
+  color: blue;
+}
+
+.additional p span:hover {
+  text-decoration: underline;
+}
+
+.or {
+  margin-top: 10px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.sign {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+button {
+  width: 160px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 25px;
+
+  background: none;
+  border: 2px solid #000;
+}
+/* Responsiveness:Start */
+@media screen and (max-width: 780px) {
+  .content {
+    flex-direction: column;
+    width: 400px;
+    height: fit-content;
+    margin: 20px auto;
+  }
+  .left {
+    height: 250px;
+    width: 100%;
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .content {
+    width: 100%;
+    margin: 0px;
+    border-radius: 0px;
+  }
+  .left {
+    width: 100%;
+    border-radius: 0px;
+  }
+}
+
+.loader-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Make sure it's above your content */
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.loaded{
+  display: none;
+  opacity: 0;
+}
+.exit{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 50px;
+  height: 50px;
+  font-size: 3em;
+  color: #fff;
+  background-color: rgba(0,0,0,0);
+  border: 0cap;
+  z-index: 5;
+}
+.exit a{
+  text-decoration: none;
+  color: #fff;
+}
+.left .img{
+  width:300px;
+  height: 300px;
+  position: relative;
+  left: 14%;
+  top: 7%;
+}
+.popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  visibility: hidden;
+}
+.popup-container-visible{
+  visibility: visible;
+}
+
+.confirmation-popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#confirmation-message {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+section button:hover {
+  background: #2980b9;
+}
+
+
+

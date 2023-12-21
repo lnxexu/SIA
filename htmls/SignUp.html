@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/SignUpStyle.css">
+    <title>Sign Up</title>
+</head>
+<body>
+  <div class="loader-container" id="loader">
+    <div class="loader"></div>
+  </div>
+  <div class="mast">
+    <button class="exit"><a href="index.html">x</a></button>
+    <figure class="mast__bg" style="background-image: url('/assets/bg.jpg')"></figure>
+  </div>
+    <section>
+        <div class="content">
+          <div class="left">
+            <img src="/assets/YRME.png" class="img">
+            <h1>YRME</h1>
+          </div>
+          <div class="right">
+            <div class="title">
+              <h2>Welcome to YRME</h2>
+            </div>
+            <div class="form">
+              <form id = "signup-form">
+                <div class="inputbox">
+                  <label>Full Name</label>
+                  <input type="text" placeholder="Enter your Name" id="fullName" required>
+                </div>
+                <div class="inputbox">
+                  <label>Email</label>
+                  <input type="email" placeholder="Enter your Email ID" id="email" required>
+                </div>
+                <div class="inputbox">
+                  <label>Password</label>
+                  <input type="password" placeholder="Enter your Password" id="password" required>
+                </div>
+                <div class="inputbox">
+                  <label>Confirm Password</label>
+                  <input type="password" placeholder="Confirm your Password" id="confirmPassword" required>
+                  <p id="passwordError" style="color: red;"></p>
+                </div>
+                <div class="create">
+                  <button type="button" onclick="validateForm()">Create Account</button>
+                </div>
+                <div class="additional">
+                  <p>Already have an account ? <span onclick="back()">Log In</span></p>
+                </div>
+              </form>
+              <div class="or">
+                <h3>OR</h3>
+                <div class="sign">
+                  <button>
+                    <ion-icon name="logo-google"></ion-icon> <span onclick="error()">Sign Up with Google</span>
+                  </button>
+                  <button>
+                    <ion-icon name="logo-github"></ion-icon> <span onclick="error()">Sign Up with GitHub</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+      <div class="popup-container">
+        <div class="confirmation-popup" id="confirmation-popup">
+          <p id="confirmation-message">Confirmation Message</p>
+          <button onclick="closeConfirmationPopup()">Close</button>
+        </div>
+      </div>
+    
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const visibilityDuration = 1000;
+            setTimeout(function () {
+                document.getElementById("loader").classList.add("loaded");
+            }, visibilityDuration);
+        });
+
+        function error(){
+          window.location.href = "error404.html";
+        }
+
+        function back(){
+          window.location.href = "index.html#signup";
+        }
+
+        function validateForm() {
+          const fullName = document.getElementById("fullName").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword = document.getElementById("confirmPassword").value;
+          const passwordError = document.getElementById("passwordError");
+
+          if (password !== confirmPassword) {
+            passwordError.textContent = "Passwords don't match. Please try again.";
+          } else {
+            passwordError.textContent = ""; 
+            if (fullName && email && password) {
+              const confirmationMessage = `Thank you, ${fullName}! Your sign-up was successful.`;
+              openConfirmationPopup(confirmationMessage);
+              document.getElementById("signup-form").reset();
+            } else {
+              const errorMessage = "Please fill in all fields.";
+              openConfirmationPopup(errorMessage);
+            }
+          }
+        }
+
+        function openConfirmationPopup(message) {
+          const confirmationPopup = document.getElementById("confirmation-popup");
+          const confirmationMessage = document.getElementById("confirmation-message");
+
+          confirmationMessage.textContent = message;
+          confirmationPopup.parentElement.style.visibility = "visible";
+        }
+
+        function closeConfirmationPopup() {
+          const confirmationPopup = document.getElementById("confirmation-popup");
+          confirmationPopup.parentElement.style.visibility = "hidden";
+
+        }
+      </script>
+</body>
+</html>

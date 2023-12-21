@@ -11,15 +11,19 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
    </head>
 <body>
+  <div class="loader-container" id="loader">
+    <div class="loader"></div>
+  </div>
   <nav>
     <div class="max-width">
     <div class="menu">
       <div class="logo">
-        <a href="#">  <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/370733032_724150836298143_1312689352704331071_n.png?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=wLmmgQWUEPEAX_EqOF6&_nc_ht=scontent.fmnl4-1.fna&oh=03_AdQn9Od5XoXFSn6WpBjS0QDYovGE_lfhArAyDJXivXBiQQ&oe=65901573" style="width: 75px; height: 80 xpx;"></a> 
+        <a href="#">YRME</a> 
       </div>
       <ul>
         <li><a href="#home" class="menu-link">Home</a></li>
         <li><a href="#about" class="menu-link">About</a></li>
+        <li><a href="#signup" class="menu-link">Sign In</a></li>
         <li><a href="#services" class="menu-link">Services</a></li>
      </ul>
      
@@ -31,10 +35,11 @@
   <section class="home" id="home">
     <div class="img"></div>
     <div class="center">
-      <div class="title">Aircon Repair</div>
-      <div class="sub_title">Booking System</div>
+      <div class="title">YRME Air Conditioning and Refrigeration Services</div>
       <div class="btns">
-        <a href="booking.html" class="button-link">Book Now</a>
+        <a href="#signup" class="button-link"> Have an account? Book Now</a>
+      </div>
+
   </section>
 
   
@@ -45,7 +50,7 @@
       <h2 class="title">About Us</h2>
       <div class="about-content">
         <div class="column left">
-          
+          <img src="/assets/YRME.png">
         </div>
         <div class="column right">
           <div class="text"> <span class="typing-2"></span></div>
@@ -59,30 +64,51 @@
     </div>
   </section>
 
+  <section class = "signup" id = "signup">
+    <h2 class="title">Sign in</h2>
+      <div class="account-login">
+          <h2>Sign In</h2>
+          <label class="email" >Email*</label>
+          <input type="" name="" id="username" required>
+          <label class="password" >Password*</label>
+          <input type="" name="" id="password"required>
+          <label class="checkbox"><input type="checkbox" /> Stay Signed in</label>
+          <p id="loginMessage"></p>
+          <button onclick=  "login()">Sign In</button>
+      </div>
+      <div class="account-creation">
+          <h2>Create account</h2>
+          <p>Creating an account is quick and simple and allows you to track, change or return your order.</p>
+          <button>
+              <a href="SignUp.html">create an account</a>
+          </button>
+      </div>
+  </section>
+
       <!-- Services -->
       <section class="services" id="services">
         <div class="max-width">
-          <h2 class="title">My services</h2>
+          <h2 class="title">Our services</h2>
           <div class="serv-content">
             
             <div class="card">
               <div class="box">
-                <i</i>
-                <div class="text">Heater Repair</div>
+
+                <div class="text" onclick="error()">Heater Repair</div>
                 <p></p>
               </div>
             </div>
             <div class="card">
               <div class="box">
                 
-                <div class="text">Fan Motor Rep</div>
+                <div class="text" onclick="error()">Fan Motor Rep</div>
                 <p></p>
               </div>
             </div>
             <div class="card">
               <div class="box">
                 
-                <div class="text">A/C Repair</div>
+                <div class="text" onclick="error()">A/C Repair</div>
                 <p></p>
               </div>
             </div>
@@ -90,21 +116,21 @@
             <div class="card">
               <div class="box">
                 
-                <div class="text">System Installation</div>
+                <div class="text" onclick="error()">System Installation</div>
                 <p></p>
               </div>
             </div>
             <div class="card">
               <div class="box">
                 
-                <div class="text">Heat Pump Repair</div>
+                <div class="text" onclick="error()">Heat Pump Repair</div>
                 <p></p>
               </div>
             </div>
             <div class="card">
               <div class="box">
                 
-                <div class="text">Duct Cleaning & Repair</div>
+                <div class="text" onclick="error()">Duct Cleaning & Repair</div>
                 <p></p>
               </div>
             </div>
@@ -115,5 +141,30 @@
       
     </div>
   </div>
+  <script>
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var loginMessage = document.getElementById("loginMessage");
+
+      if (username === "user" && password === "pass") {
+        loginMessage.style.color = "green";
+        loginMessage.textContent = "Login successful!";
+        window.location.href = "booking.html";
+      } else {
+        loginMessage.style.color = "red";
+        loginMessage.textContent = "Invalid username or password. Please try again.";
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const visibilityDuration = 1000;
+      setTimeout(function () {
+        document.getElementById("loader").classList.add("loaded");
+      }, visibilityDuration);
+    });
+        function error(){
+          window.location.href = "error404.html";
+        }
+  </script>
 </body>
 </html>

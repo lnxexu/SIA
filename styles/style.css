@@ -13,11 +13,11 @@ body {
 .login-box {
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 400px;
+  left: 70%;
+  width: 600px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: rgb(41, 41, 41);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
@@ -26,6 +26,7 @@ body {
 h2 {
   margin: 0 0 20px;
   color: #fff;
+  text-transform: uppercase;
 }
 
 .user-box {
@@ -240,3 +241,226 @@ h2 {
 #confirmation-popup button {
   padding: 10px;
 }
+
+
+
+/* nth-trans-delay() */
+@mixin nth-trans-delay($delay_items: 7, $delay_time: 0.2s) {
+  @for $i from 1 through $delay_items {
+    &:nth-child(#{$i}) {
+      transition-delay: $delay_time * $i;
+    }
+  }
+}
+
+/* nth-ani-delay() */
+@mixin nth-ani-delay($delay_items: 7, $delay_time: 0.2s) {
+  @for $i from 1 through $delay_items {
+    &:nth-child(#{$i}) {
+      animation-delay: $delay_time * $i;
+    }
+  }
+}
+
+/* bg-overlay() */
+@mixin bg-overlay($bg_hex: #111, $bg_opacity: 0.6, $top_layer: 'header') {
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba($bg_hex, $bg_opacity);
+  }
+
+  /* Layer atop overlay */
+  & > #{$top_layer} {
+    z-index: 2;
+    position: relative;
+  }
+}
+
+/* Setups */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  margin: 0;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.sep {
+  border: 0;
+  width: 3em;
+  height: 5px;
+  margin: 1em 0;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 3;
+  top: 48%;
+}
+
+.mast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background-color: #111;
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(#111, 0.9);
+  }
+}
+
+.mast__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: 50%;
+  opacity: 30%;
+}
+
+.mast__header {
+  padding: 5%;
+}
+
+.mast__title {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: flex;
+}
+
+/* Letter animation */
+.mast__title span {
+  animation: letter-glow 1s 0s ease both;
+  @include nth-ani-delay(25, 0.05s);
+}
+
+/* Letter animation */
+.mast__text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.5em;
+  margin: 0 0 0.5em;
+  line-height: 1.5;
+  white-space: pre;
+  text-transform: uppercase;
+}
+
+.mast__text span {
+  animation: letter-glow 1s 0s ease both;
+  @include nth-ani-delay(180, 0.05s);
+}
+
+/* Letter Glow */
+@keyframes letter-glow {
+  0% {
+    opacity: 0;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+  }
+  66% {
+    opacity: 1;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
+  }
+  77% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.0);
+  }
+}
+.exit{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 50px;
+  height: 50px;
+  font-size: 3em;
+  color: #fff;
+  background-color: rgba(0,0,0,0);
+  border: 0cap;
+  z-index: 5;
+}
+.exit a{
+  text-decoration: none;
+  color: #fff;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff; /* Background color for the loading screen */
+  z-index: 1000;
+}
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-screen p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333; /* Text color for the loading message */
+}
+
+.content {
+  display: none; /* Hide the content initially */
+}
+.loaded{
+  opacity: 0;
+  display: none;
+}
+
+/* Add more styles for your main content as needed */
+
